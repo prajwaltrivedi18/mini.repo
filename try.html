@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="dropdown">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+      
+      <table id="radio-buttons">
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+<script>
+    const dropdown = document.getElementById("dropdown");
+const radioButtonsTable = document.getElementById("radio-buttons");
+
+dropdown.addEventListener("change", function() {
+  // Clear previous radio buttons
+  radioButtonsTable.innerHTML = "";
+
+  // Create radio buttons based on selected option
+  if (dropdown.value === "option1") {
+    createRadioButtons(["Radio 1", "Radio 2", "Radio 3"]);
+    createGap();
+    createRadioButtons(["Radio 4", "Radio 5", "Radio 6"]);
+  } else if (dropdown.value === "option2") {
+    createRadioButtons(["Radio 7", "Radio 8", "Radio 9"]);
+    createGap();
+    createRadioButtons(["Radio 10", "Radio 11"]);
+  } else if (dropdown.value === "option3") {
+    createRadioButtons(["Radio 12", "Radio 13", "Radio 14"]);
+    createGap();
+    createRadioButtons(["Radio 15", "Radio 16", "Radio 17"]);
+  }
+});
+
+function createRadioButtons(options) {
+  const row = document.createElement("tr");
+
+  for (let i = 0; i < options.length; i++) {
+    const radioButton = document.createElement("input");
+    radioButton.type = "radio";
+    radioButton.name = "options";
+    radioButton.id = "option" + (i + 1);
+    radioButton.value = options[i];
+
+    const label = document.createElement("label");
+    label.htmlFor = "option" + (i + 1);
+    label.appendChild(document.createTextNode(options[i]));
+
+    const cell = document.createElement("td");
+    cell.appendChild(radioButton);
+    cell.appendChild(label);
+
+    row.appendChild(cell);
+  }
+
+  radioButtonsTable.appendChild(row);
+}
+
+function createGap() {
+  const row = document.createElement("tr");
+  radioButtonsTable.appendChild(row);
+}
+
+</script>      
+</body>
+</html>

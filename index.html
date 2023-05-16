@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+
+<style>
+  body{ 
+    width: 85rem;
+    height: 39.5rem;
+    background: linear-gradient(180deg, #f3dfa9 0%, #fff 100%);
+    background-repeat: no-repeat;
+  }
+  .welcom{
+    background: url("bookk.jpg") center center/cover no-repeat;
+    width: 86.3rem;
+    height: 39.5rem;
+    border-radius: .9rem;
+    animation: exit 4s ease 3s 1 normal forwards;
+  
+    
+  }
+  .formm{
+    position: absolute;
+    left: 5rem;
+    top: 17.5rem;
+    font-size: 1.6rem;
+    font-family: Georgia, serif;
+  }
+  .heading{
+    position: absolute;
+    left: 13.5rem;
+    top: 1rem;
+    font-family: Georgia, serif;
+  }
+  h3{
+    position:absolute;
+      left: 32rem;
+    top: 9rem;
+    font-family: "Sofia", sans-serif;
+    font-size: 3rem;
+    text-decoration: underline;
+    color: rgb(43, 41, 41);
+  }
+  
+  h2{
+    position:absolute;
+    left: 3rem;
+    top: 16rem;
+  }
+  .head{
+    position:relative;
+      left: 11rem;
+    bottom: 12rem;
+    font-size: 2.2rem;
+    text-shadow: 3px 3px 3px #ababab;
+    font-family: Georgia, serif;
+  }
+  .img{
+    border-radius: 0.2rem;
+  }
+  
+  @keyframes exit {
+    0% {
+      transform: scale(1);
+    }
+  
+    100% {
+      transform: scale(0);
+    }
+  }
+  .quote{
+    
+      position: absolute;
+      bottom: 6rem;
+      right: 6rem;
+      font-size: 1.7rem;
+      color:white;
+      text-shadow: 1px 3px 3px #ababab;
+        font-family: Georgia, serif;
+        letter-spacing: .2rem;
+      line-height: 2.3rem;
+      
+  }
+</style>
+</head>
+<body><nav class="navbar bg-body-tertiary heading">
+    <div class="container-fluid">
+      <a class="navbar-brand">
+        <img src="Bec_page-0001.jpg" alt="Logo" width="130" height="150" class="d-inline-block align-text-top img">
+       <pre class="head">Basaveshwar Engineering College (Autonomous)
+                           Bagalkot
+    Information Science Engineering
+                        Department
+       </pre>
+      </a>
+    </div>
+  </nav>
+  <h3>Department &nbspLibrary</h3>
+ 
+  <form action="/enter" method="post" class="formm">
+    <label>Select semester:</label> 
+    <select id="dropdown">
+      <option value="">--Select--</option>
+      <option value="option1">Semester 3</option>
+      <option value="option2">Semester 4</option>
+      <option value="option3">Semester 5</option>
+      <option value="option4">Semester 6</option>
+      <option value="option5">Semester 7</option>
+      <option value="option6">Semester 8</option>
+    </select>
+    <br><br>
+    <div id="radio-buttons"></div>
+    <br>
+    <input type="submit">
+    
+    
+</form>
+<div class="welcom" >
+
+<pre class="quote">"A book is a gift you can open
+           again and again"</pre>
+
+</div>
+<script>
+  const dropdown = document.getElementById("dropdown");
+  const radioButtonsContainer = document.getElementById("radio-buttons");
+  
+  dropdown.addEventListener("click", function() {
+    
+    radioButtonsContainer.innerHTML = "Available Books";
+  
+    
+    if (dropdown.value === "option1") {
+      createRadioButtons(["LD - Author - Edition","DS - Author - Edition", "DBMS - Author - Edition", "CO - Author - Edition"]);
+    } else if (dropdown.value === "option2") {
+      createRadioButtons(["OS - Author - Edition", "ADA - Author - Edition","JAVA - Author - Edition","MC - Author - Edition"]);
+    } else if (dropdown.value === "option3") {
+      createRadioButtons(["SQL - Author - Edition", "DSP - Author - Edition", "FA - Author - Edition", "SE - Author - Edition","WP - Author - Edition"]);
+    }else if (dropdown.value === "option4") {
+      createRadioButtons(["ST - Author - Edition", "AJP - Author - Edition", "CN - Author - Edition", "AA - Author - Edition"]);
+    }else if (dropdown.value === "option5") {
+      createRadioButtons(["7Book1 - Author - Edition", "7Book2 - Author - Edition", "7Book3 - Author - Edition", "7Book4 - Author - Edition"]);
+    }else if (dropdown.value === "option6") {
+      createRadioButtons(["8Book1 - Author - Edition", "8Book2 - Author - Edition", "8Book3 - Author - Edition", "8Book4 - Author - Edition"]);
+    }
+  });
+  
+  function createRadioButtons(options) {
+    for (let i = 0; i < options.length; i++) {
+      const radioButton = document.createElement("input");
+      radioButton.type = "radio";
+      radioButton.name = "book";
+      radioButton.id = "option" + (i + 1);
+      radioButton.value = options[i];
+  
+      const label = document.createElement("label");
+      label.htmlFor = "option" + (i + 1);
+      label.appendChild(document.createTextNode(options[i]));
+  
+      const div = document.createElement("div");
+      div.appendChild(radioButton);
+      div.appendChild(label);
+     
+      radioButtonsContainer.appendChild(div);
+    }
+  }
+  
+</script>
+</body>
+</html>
